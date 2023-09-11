@@ -100,7 +100,7 @@ def generate_product_info(page_number: int, page_size=10) -> str:
     """
     pass
 
-# 【服務功能-會員註冊】
+# 【服務功能[1]-會員註冊】
 def register():
     """
     1. 設定帳號。如果帳號已存在，則顯示「【此帳號已被註冊!】」。
@@ -114,7 +114,7 @@ def register():
     """
     pass
 
-# 【服務功能-會員登入】
+# 【服務功能[2]-會員登入】
 def login():
     """
     1. 輸入帳號。如果帳號不存在，則顯示「查無此帳號，請先註冊再登入」。
@@ -123,7 +123,7 @@ def login():
     """
     pass
 
-# 【服務功能-會員登出】
+# 【服務功能[3]-會員登出】
 @check_login
 def logout():
     """
@@ -131,7 +131,7 @@ def logout():
     """
     pass
 
-# 【服務功能-查看商城清單】
+# 【服務功能[4]-查看商城清單】
 def show_product_list():
     """
     此函式會呼叫 generate_product_info 產生器，並顯示商品資訊。
@@ -141,7 +141,7 @@ def show_product_list():
     """
     pass
 
-# 【服務功能-開始購物】
+# 【服務功能[5]-開始購物】
 @check_login
 def shopping():
     """
@@ -155,7 +155,7 @@ def shopping():
     """
     pass
 
-# 【服務功能-查看購物車】
+# 【服務功能[6]-查看購物車】
 @check_login
 def show_cart():
     """
