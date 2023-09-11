@@ -76,6 +76,9 @@ def is_sufficient(item:str, number:int) -> bool:
 def check_login(func):
     """
     此函式為裝飾器，需接收一個函式作為參數。
+    
+    這個裝飾器會使被裝飾的函式，只有在登入後才能執行。
+    
     如果有登入，則執行原函式；如果沒有登入，則顯示「【請先登入】」。
     """
     def wrapper():
