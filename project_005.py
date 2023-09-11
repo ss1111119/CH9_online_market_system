@@ -6,7 +6,7 @@ global user_data
 with open('user_data.json','r') as f:
     user_data = json.load(f)
     
-# 引入商品資料
+# 引入商品資
 global product_list
 with open('product.json','r') as f:
     product_list = json.load(f)
