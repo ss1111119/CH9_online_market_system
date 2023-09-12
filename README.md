@@ -40,3 +40,6 @@
 - 【服務功能-會員登出】
 - 【服務功能-開始購物】（try except）
 - 【服務功能-查看購物車】
+
+更詳細的需求書，請查看:
+[Python 實體讀書會/線上交流會 Ch9 專案練習](https://www.notion.so/CH9-041cf2260a004061a1aae1d2aa0ee8da?pvs=4#ee8e7e4352c844aab52977d8d26aecf8)
