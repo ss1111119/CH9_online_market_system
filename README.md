@@ -32,7 +32,7 @@
 
 ## 第二階段 - 功能開發需求一覽
 
-![「好頂線上生鮮超市」功能架構圖](https://prod-files-secure.s3.us-west-2.amazonaws.com/04d03fc4-1988-40d3-a56c-dbdce1ef5337/6de4832e-2802-43bf-966e-870d5911cb45/Untitled.png)
+[「好頂線上生鮮超市」功能架構圖](https://www.notion.so/CH9-041cf2260a004061a1aae1d2aa0ee8da?pvs=4#d6df5a6e86af41ac9235ec7b1462be34)
 
 - 【服務功能-會員註冊】
 - 【服務功能-會員登入】
