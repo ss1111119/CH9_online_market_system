@@ -133,7 +133,9 @@ def login():
 @check_login
 def logout():
     """
-    將全域變數 login_status 設為 False，表示登出。
+    1. 詢問「【確定要登出嗎? [y/n]】」。
+    2. 如果輸入y，則清空購物車，並將全域變數 login_status 設為 False，表示登出。
+    3. 如果輸入n，則不做任何事情。直接返回主目錄。
     """
     pass
 
