@@ -64,12 +64,31 @@ def is_product(item:str) -> bool:
 
 # 【系統功能-檢查商品庫存是否足夠】
 def is_sufficient(item:str, number:int) -> bool:
+
     """
     根據給予的商品名稱，逐項檢查是否存在於資料集中。
     
     註: 此函式會檢查number是否為正整數，若不是則會拋出TypeError例外。
     例外訊息為「商品數量必須為正整數」。
     """
+    try:
+        if(number <= 0):
+            raise TypeError("商品數量必須為正整數")
+        if(not isinstance(number, int)):
+            raise TypeError("商品數量必須為正整數")
+        
+        for i in range(len(product_list)):
+            if(product_list[i]["name"] == item):
+                if(number <= product_list[i]["stock"]):
+                    return True
+                else:
+                    return False
+                
+        raise productError("商品不存在")
+    except TypeError as e:
+        print("引發異常：",repr(e))
+    except productError as e1:
+        print("引發異常：",repr(e1))
     pass
 
 # 【功能限制-登入後才能用的項目】
@@ -215,5 +234,10 @@ def main():
         elif user_input == "6":
             show_cart()
 
+# 測試程式碼
 if __name__ == "__main__":
-    main()
+    print(is_sufficient("鮭魚", 5))
+    print(is_sufficient("牛肉", 10))
+    print(is_sufficient("牛肉", 10000))
+    print(is_sufficient("豆漿", 9999))
+    print(is_sufficient("豆漿", 0.5))
