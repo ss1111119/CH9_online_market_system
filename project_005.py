@@ -2,12 +2,12 @@ import json
 
 # 引入會員資料
 global user_data
-with open('user_data.json','r') as f:
+with open('user_data.json','r', encoding="utf-8") as f:
     user_data = json.load(f)
     
 # 引入商品資料
 global product_list
-with open('user_data.json','r') as f:
+with open('product.json','r', encoding="utf-8") as f:
     product_list = json.load(f)
 
 global login_status
@@ -17,7 +17,7 @@ global cart
 cart = []
 #print(user_data)
 # 【系統功能-檢查帳號】
-def is_user(username:str) -> bool:
+def is_user(username: str) -> bool:
     """
     根據給予的帳號，逐項檢查是否存在於資料集中。
     """
@@ -75,21 +75,43 @@ def check_password(username:str, pwd:str) -> bool:
     pass
 
 # 【系統功能-檢查商品是否存在】
-def is_product(item:str) -> bool:
+def is_product(item: str) -> bool:
     """
     根據給予的商品名稱，逐項檢查是否存在於資料集中。
     """
-    pass
+    for product in product_list:
+        if product['name'] == item:
+            return True
+    return False
+
 
 # 【系統功能-檢查商品庫存是否足夠】
 def is_sufficient(item:str, number:int) -> bool:
+
     """
     根據給予的商品名稱，逐項檢查是否存在於資料集中。
     
     註: 此函式會檢查number是否為正整數，若不是則會拋出TypeError例外。
     例外訊息為「商品數量必須為正整數」。
     """
-    pass
+    class ProductError(Exception):
+        pass
+    
+    
+    try:
+        if(not isinstance(number, int)) | (number <= 0):
+            raise TypeError("商品數量必須為正整數")
+        
+        for i in range(len(product_list)):
+            if(product_list[i]["name"] == item):
+                if(number <= product_list[i]["stock"]):
+                    return True
+                else:
+                    return False
+    
+    except TypeError as e:
+        print(e)
+        
 
 # 【功能限制-登入後才能用的項目】
 def check_login(func):
