@@ -99,10 +99,12 @@ def is_sufficient(item:str, number:int) -> bool:
     註: 此函式會檢查number是否為正整數，若不是則會拋出TypeError例外。
     例外訊息為「商品數量必須為正整數」。
     """
+    class ProductError(Exception):
+        pass
+    
+    
     try:
-        if(number <= 0):
-            raise TypeError("商品數量必須為正整數")
-        if(not isinstance(number, int)):
+        if(not isinstance(number, int)) | (number <= 0):
             raise TypeError("商品數量必須為正整數")
         
         for i in range(len(product_list)):
@@ -111,13 +113,10 @@ def is_sufficient(item:str, number:int) -> bool:
                     return True
                 else:
                     return False
-                
-        raise productError("商品不存在")
+    
     except TypeError as e:
-        print("引發異常：",repr(e))
-    except productError as e1:
-        print("引發異常：",repr(e1))
-    pass
+        print(e)
+        
 
 # 【功能限制-登入後才能用的項目】
 def check_login(func):
@@ -264,4 +263,8 @@ def main():
 
 # 測試程式碼
 if __name__ == "__main__":
-    main()
+    print(is_sufficient("鮭魚", 5))
+    print(is_sufficient("牛肉", 10))
+    print(is_sufficient("牛肉", 10000))
+    print(is_sufficient("豆漿", 9999))
+    is_sufficient("豆漿", )
