@@ -60,19 +60,6 @@ def is_valid_email(email:str) -> bool:
     
 
     return True
-       
-    
-    
-    
-    
-    
-        
-        
-
-
-
-
-
 # 【系統功能-檢查密碼安全性】
 def is_valid_password(pwd:str) -> bool:
     """
