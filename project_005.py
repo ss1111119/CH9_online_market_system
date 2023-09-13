@@ -2,12 +2,12 @@ import json
 
 # 引入會員資料
 global user_data
-with open('user_data.json','r') as f:
+with open('user_data.json','r', encoding="utf-8") as f:
     user_data = json.load(f)
     
 # 引入商品資料
 global product_list
-with open('product.json','r') as f:
+with open('product.json','r', encoding="utf-8") as f:
     product_list = json.load(f)
 
 global login_status
@@ -38,7 +38,40 @@ def is_valid_email(email:str) -> bool:
     3. @ 前後的「使用者名稱」、「域名」都要存在。
     4. 「域名」的部分要包含至少一個句點。
     """
-    pass
+
+    if email.count("@") != 1:
+        return False
+    
+    if email[0] == "@":
+        return False
+    
+    if email[-1] == "@":
+        return False 
+    
+    username, domain = email.split("@")
+    
+    if not username or not domain:
+        return False 
+
+    if "." not in domain:
+        return False  
+       
+    
+    
+
+    return True
+       
+    
+    
+    
+    
+    
+        
+        
+
+
+
+
 
 # 【系統功能-檢查密碼安全性】
 def is_valid_password(pwd:str) -> bool:
@@ -215,5 +248,9 @@ def main():
         elif user_input == "6":
             show_cart()
 
+# 測試程式碼
 if __name__ == "__main__":
-    main()
+    print(is_valid_email("test@gmail.com"))
+    print(is_valid_email("andy_001@gmail.com"))
+    print(is_valid_email("tt1010@com"))
+    print(is_valid_email("fijainfdfs@sdfs.com"))
