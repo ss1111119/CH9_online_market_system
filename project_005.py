@@ -2,12 +2,12 @@ import json
 
 # 引入會員資料
 global user_data
-with open('user_data.json','r') as f:
+with open('user_data.json','r', encoding="utf-8") as f:
     user_data = json.load(f)
     
 # 引入商品資料
 global product_list
-with open('product.json','r') as f:
+with open('product.json','r', encoding="utf-8") as f:
     product_list = json.load(f)
 
 global login_status
@@ -17,11 +17,15 @@ global cart
 cart = []
 
 # 【系統功能-檢查帳號】
-def is_user(username:str) -> bool:
+def is_user(username: str) -> bool:
     """
     根據給予的帳號，逐項檢查是否存在於資料集中。
     """
-    pass
+    for user in user_data:
+        if user['username'] == username:
+            return True
+    return False
+
 
 # 【系統功能-檢查電子郵件】
 def check_email(email:str) -> bool:
@@ -38,8 +42,28 @@ def is_valid_email(email:str) -> bool:
     3. @ 前後的「使用者名稱」、「域名」都要存在。
     4. 「域名」的部分要包含至少一個句點。
     """
-    pass
 
+    if email.count("@") != 1:
+        return False
+    
+    if email[0] == "@":
+        return False
+    
+    if email[-1] == "@":
+        return False 
+    
+    username, domain = email.split("@")
+    
+    if not username or not domain:
+        return False 
+
+    if "." not in domain:
+        return False  
+       
+    
+    
+
+    return True
 # 【系統功能-檢查密碼安全性】
 def is_valid_password(pwd:str) -> bool:
     """
@@ -56,11 +80,15 @@ def check_password(username:str, pwd:str) -> bool:
     pass
 
 # 【系統功能-檢查商品是否存在】
-def is_product(item:str) -> bool:
+def is_product(item: str) -> bool:
     """
     根據給予的商品名稱，逐項檢查是否存在於資料集中。
     """
-    pass
+    for product in product_list:
+        if product['name'] == item:
+            return True
+    return False
+
 
 # 【系統功能-檢查商品庫存是否足夠】
 def is_sufficient(item:str, number:int) -> bool:
@@ -236,8 +264,4 @@ def main():
 
 # 測試程式碼
 if __name__ == "__main__":
-    print(is_sufficient("鮭魚", 5))
-    print(is_sufficient("牛肉", 10))
-    print(is_sufficient("牛肉", 10000))
-    print(is_sufficient("豆漿", 9999))
-    print(is_sufficient("豆漿", 0.5))
+    main()
