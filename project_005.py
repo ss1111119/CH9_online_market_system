@@ -250,7 +250,4 @@ def main():
 
 # 測試程式碼
 if __name__ == "__main__":
-    print(is_valid_email("test@gmail.com"))
-    print(is_valid_email("andy_001@gmail.com"))
-    print(is_valid_email("tt1010@com"))
-    print(is_valid_email("fijainfdfs@sdfs.com"))
+    main()
