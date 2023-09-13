@@ -7,7 +7,7 @@ with open('user_data.json','r') as f:
     
 # 引入商品資料
 global product_list
-with open('product.json','r') as f:
+with open('user_data.json','r') as f:
     product_list = json.load(f)
 
 global login_status
@@ -15,20 +15,30 @@ login_status = True
 
 global cart
 cart = []
-
+#print(user_data)
 # 【系統功能-檢查帳號】
 def is_user(username:str) -> bool:
     """
     根據給予的帳號，逐項檢查是否存在於資料集中。
     """
-    pass
+    for data in user_data :
+        if username == data['username'] :
+            return True         
+    return False
+
 
 # 【系統功能-檢查電子郵件】
 def check_email(email:str) -> bool:
     """
     根據給予的電子郵件，逐項檢查是否與資料集中的電子郵件重複。
     """
-    pass
+    #print(user_data)
+    for data in user_data :
+        if email == data['email'] :
+            return True         
+    return False
+        # else :
+        #     return True
 
 # 【系統功能-檢查電子郵件格式】
 def is_valid_email(email:str) -> bool:
@@ -38,16 +48,25 @@ def is_valid_email(email:str) -> bool:
     3. @ 前後的「使用者名稱」、「域名」都要存在。
     4. 「域名」的部分要包含至少一個句點。
     """
-    pass
-
+    if email.count('@') != 1:
+        return False
+    if email[0] == '@' and email[-1] =='@':
+        return False
+    if len(email.split('@')) != 2 :
+        return False
+    if '.' not in email.split('@')[-1] :
+        return False
+    return True
+    
 # 【系統功能-檢查密碼安全性】
 def is_valid_password(pwd:str) -> bool:
     """
     1. 密碼長度需大於8個字元。
     2. 密碼需包含大小寫字母與數字。
     """
-    pass
-     
+    if len(pwd) < 8 :
+        return False
+    
 # 【系統功能-確認密碼】
 def check_password(username:str, pwd:str) -> bool:
     """
@@ -214,6 +233,12 @@ def main():
             
         elif user_input == "6":
             show_cart()
-
+# 測試程式碼
 if __name__ == "__main__":
-    main()
+    print(is_valid_password("AmyIsVerySmart555"))
+    print(is_valid_password("StevenCheng1222"))
+    print(is_valid_password("#%%##%%%#123"))
+    print(is_valid_password("0123456789"))
+    print(is_valid_password("qwertyasdfgh"))
+    print(is_valid_password("ABab12"))
+    print(is_valid_password(""))
